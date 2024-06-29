@@ -6,7 +6,9 @@ import portada from "../assets/banner.jpg";
 function Home() {
   return (
     <>
-      <div className="fondo"></div>
+      <div className="fondo">
+        <p>a</p>
+      </div>
       <div className="contenedorHome">
         <div className="contenedorHome1">
           <h3>Años de experiencia </h3>
