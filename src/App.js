@@ -11,21 +11,24 @@ import { Menu } from "./components/Menu";
 import { Footer } from "./components/Footer/footer";
 import { Cursos } from "./pages/Cursos";
 import { MiCurso } from "./components/MiCurso";
+import { AuthProvider } from "./auth/AuthContext";
 
 function App() {
   return (
     <HashRouter>
-      <Menu />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/page1" element={<Page1 />} />
-        <Route path="/page2" element={<Page2 />} />
-        <Route path="/cursos" element={<Cursos />}>
-          <Route path=":url" element={<MiCurso />} />
-        </Route>
-        <Route path="*" element={<p>Ups, no existe la ruta</p>} />
-      </Routes>
-      <Footer />
+      <AuthProvider>
+        <Menu />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/page1" element={<Page1 />} />
+          <Route path="/page2" element={<Page2 />} />
+          <Route path="/cursos" element={<Cursos />}>
+            <Route path=":url" element={<MiCurso />} />
+          </Route>
+          <Route path="*" element={<p>Ups, no existe la ruta</p>} />
+        </Routes>
+        <Footer />
+      </AuthProvider>
     </HashRouter>
   );
 }
