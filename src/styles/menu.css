@@ -1,0 +1,27 @@
+.menu {
+  margin: 0%;
+  padding: 0%;
+  background-color: rgba(29, 32, 31, 1);
+}
+.menu_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu h2 {
+  margin: 0%;
+  padding: 1rem;
+  color: var(--blanco);
+}
+
+.menu ul {
+  display: flex;
+  column-gap: 1rem;
+  margin-right: 1rem;
+  list-style-type: none;
+}
+
+.menu a {
+  text-decoration: none;
+}
