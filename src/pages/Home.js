@@ -9,33 +9,35 @@ function Home() {
       <div className="fondo">
         <p>a</p>
       </div>
-      <div className="contenedorHome">
-        <div className="contenedorHome1">
-          <h3>Años de experiencia </h3>
-          <img src={imagen1} alt=""></img>
-          <p>
-            caurs adasdas dolor sit amet consectetur adipisicing elit. Esse,
-            magnam. Odit aperiam voluptates repellat quae ipsum magnam. Odit
-            aperiam voluptates repellat quae ipsum{" "}
-          </p>
-        </div>
-        <div className="contenedorHome2">
-          <h3>Calidad Garantizada </h3>
-          <img src={imagen2} alt=""></img>
-          <p>
-            caurs adasdas dolor sit amet consectetur adipisicing elit. Esse,
-            magnam. Odit aperiam voluptates repellat quae ipsum magnam. Odit
-            aperiam voluptates repellat quae ipsum{" "}
-          </p>
-        </div>
-        <div className="contenedorHome3">
-          <h3>Los Mejores granos </h3>
-          <img src={imagen3} alt=""></img>
-          <p>
-            caurs adasdas dolor sit amet consectetur adipisicing elit. Esse,
-            magnam. Odit aperiam voluptates repellat quae ipsum magnam. Odit
-            aperiam voluptates repellat quae ipsum{" "}
-          </p>
+      <div className="contenedorHome sombra">
+        <div className="servicios">
+          <div className="servicio">
+            <h3>Años de experiencia </h3>
+            <img src={imagen1} alt=""></img>
+            <p>
+              caurs adasdas dolor sit amet consectetur adipisicing elit. Esse,
+              magnam. Odit aperiam voluptates repellat quae ipsum magnam. Odit
+              aperiam voluptates repellat quae ipsum{" "}
+            </p>
+          </div>
+          <div className="servicio">
+            <h3>Calidad Garantizada </h3>
+            <img src={imagen2} alt=""></img>
+            <p>
+              caurs adasdas dolor sit amet consectetur adipisicing elit. Esse,
+              magnam. Odit aperiam voluptates repellat quae ipsum magnam. Odit
+              aperiam voluptates repellat quae ipsum{" "}
+            </p>
+          </div>
+          <div className="servicio">
+            <h3>Los Mejores granos </h3>
+            <img src={imagen3} alt=""></img>
+            <p>
+              caurs adasdas dolor sit amet consectetur adipisicing elit. Esse,
+              magnam. Odit aperiam voluptates repellat quae ipsum magnam. Odit
+              aperiam voluptates repellat quae ipsum{" "}
+            </p>
+          </div>
         </div>
       </div>
     </>

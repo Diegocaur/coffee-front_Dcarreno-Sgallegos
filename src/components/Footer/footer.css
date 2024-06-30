@@ -2,3 +2,29 @@ h1 {
   background-color: #d1dede;
   text-align: center;
 }
+
+.contactos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4rem 3rem;
+}
+
+.cont_img {
+  margin-right: 1rem;
+
+  height: 3rem;
+  width: 3rem;
+}
+
+.cont_img:hover {
+  height: 3.5rem;
+  width: 3.5rem;
+  margin: auto 1rem;
+}
+
+.inferior {
+  text-align: center;
+  font-size: large;
+  margin: 3rem auto;
+}

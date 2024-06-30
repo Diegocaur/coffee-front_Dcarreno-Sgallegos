@@ -9,6 +9,7 @@ const LoginPage = () => {
 
   const login = async () => {
     const resp = await loginAccount({ username: username, password: password });
+
     if (resp) {
       await setToken(resp.token);
     } else {
