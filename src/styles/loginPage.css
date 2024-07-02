@@ -1,0 +1,9 @@
+.login_titulo {
+  color: rgb(72, 48, 19);
+  font-size: 5rem;
+  text-align: center;
+}
+
+.login_titulo span {
+  color: rgb(188, 164, 135);
+}

@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../auth/AuthContext";
 import { loginAccount } from "../services/api";
 
+import "../styles/loginPage.css";
+
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,8 +22,12 @@ const LoginPage = () => {
   return (
     <>
       <div>
-        <h1>Login</h1>
+        <h1 className="login_titulo">
+          Cafet<span>eria</span> Maule
+        </h1>
+        <label for="text">nombre</label>
         <input
+          id="text"
           type="text"
           onChange={(e) => {
             setUsername(e.target.value);
