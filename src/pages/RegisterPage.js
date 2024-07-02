@@ -59,17 +59,17 @@ const RegisterPage = () => {
 
   return (
     <div>
-      <div className="handleSubmit">
-        <h1 className="handleSubmit_titulo">
+      <div className="login">
+        <h1 className="login_titulo">
           Cafet<span>eria</span> Ma<span>u</span>le
         </h1>
-        <h1 className="handleSubmit_titulo">
+        <h1 className="login_titulo">
           Regis<span>tra</span> Tu
           <span>Cue</span>nta
         </h1>
       </div>
 
-      <form className="handleSubmit_cuerpo my-10 bg-white shadow rounded-lg p-10">
+      <form className="login_cuerpo my-10 bg-white shadow rounded-lg p-10">
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"

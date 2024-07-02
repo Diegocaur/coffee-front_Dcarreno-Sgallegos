@@ -9,7 +9,7 @@ function Menu() {
     //pendiente: &&rol==="ADMIN"
     routes.splice(0, routes.length);
     routes.push({ to: "/", text: "Home" });
-    routes.push({ to: "/page1", text: "Pagina 1" });
+    routes.push({ to: "/cafes", text: "Cafes" });
     routes.push({ to: "/page2", text: "Pagina 2" });
     routes.push({ to: "/cursos", text: "Mis Cursos" });
     routes.push({ to: "/nuevo-coffee", text: "Crear Coffe" });
@@ -19,7 +19,7 @@ function Menu() {
     logout();
     routes.splice(0, routes.length);
     routes.push({ to: "/", text: "Home" });
-    routes.push({ to: "/page1", text: "Pagina 1" });
+    routes.push({ to: "/coffes", text: "Cafes" });
     routes.push({ to: "/page2", text: "Pagina 2" });
     routes.push({ to: "/cursos", text: "Mis Cursos" });
     routes.push({ to: "/login", text: "Inicia Sesión" });
@@ -78,7 +78,7 @@ function Menu() {
 const routes = [];
 
 routes.push({ to: "/", text: "Home" });
-routes.push({ to: "/page1", text: "Pagina 1" });
+routes.push({ to: "/cafes", text: "Cafes" });
 routes.push({ to: "/page2", text: "Pagina 2" });
 routes.push({ to: "/cursos", text: "Mis Cursos" });
 routes.push({ to: "/login", text: "Inicia Sesión" });

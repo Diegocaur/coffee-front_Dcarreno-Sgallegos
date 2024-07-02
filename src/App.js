@@ -5,7 +5,7 @@ import "./styles/menu.css";
 import "./styles/normalize.css";
 import "./styles/home.css";
 import { Home } from "./pages/Home";
-import { Page1 } from "./pages/Page1";
+import { Coffes } from "./pages/Coffes";
 import { Page2 } from "./pages/Page2";
 import { Menu } from "./components/Menu";
 import { Footer } from "./components/Footer/footer";
@@ -24,7 +24,7 @@ function App() {
         <Menu />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/page1" element={<Page1 />} />
+          <Route path="/cafes" element={<Coffes />} />
           <Route path="/page2" element={<Page2 />} />
           <Route path="/cursos" element={<Cursos />}>
             <Route path=":url" element={<MiCurso />} />
