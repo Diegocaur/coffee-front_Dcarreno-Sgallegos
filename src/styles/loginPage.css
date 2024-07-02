@@ -1,3 +1,7 @@
+.login h1 {
+  margin: 1rem 0rem;
+}
+
 .login_titulo {
   color: rgb(72, 48, 19);
   font-size: 5rem;
@@ -6,4 +10,10 @@
 
 .login_titulo span {
   color: rgb(188, 164, 135);
+}
+
+.login_cuerpo {
+  max-width: 100rem;
+  margin: 0 auto;
+  height: 40rem;
 }

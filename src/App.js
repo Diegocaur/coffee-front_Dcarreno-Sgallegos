@@ -15,6 +15,7 @@ import { AuthProvider } from "./auth/AuthContext";
 import LoginPage from "./pages/LoginPage";
 import CreateCoffe from "./pages/CreateCoffe";
 import { PrivateRoute } from "./auth/PrivateRoute";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path=":url" element={<MiCurso />} />
           </Route>
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/registrar" element={<RegisterPage />} />
           <Route
             path="/nuevo-coffee"
             element={
