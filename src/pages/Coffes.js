@@ -27,18 +27,24 @@ function Coffes() {
   }, []);
 
   return (
-    <div className="coffes_disp">
-      <h2 className="text-center">Nuestras Preparaciones</h2>
-      <div className="coffees sombra">
-        {cafes.map((cafe) => (
-          <div className="coffee" key={cafe.id}>
-            <h3>{cafe.name}</h3>
-            <img src={imagen1} alt="" />
-            <p>{cafe.description}</p>
-          </div>
-        ))}
+    <>
+      <div className="coffes_titulo">
+        <h1 className="font-black text-6xl text-yellow-950">
+          Servicio de Cafeteria
+        </h1>
       </div>
-    </div>
+      <div className="coffes_disp">
+        <div className="coffees sombra">
+          {cafes.map((cafe) => (
+            <div className="coffee" key={cafe.id}>
+              <h3>{cafe.name}</h3>
+              <img src={imagen1} alt="" />
+              <p>{cafe.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 

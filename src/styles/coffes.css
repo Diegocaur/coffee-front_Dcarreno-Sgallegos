@@ -1,12 +1,39 @@
+.coffes_titulo {
+  background-image: url(../assets/fondo3.png);
+  background-size: cover;
+  height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+@media (min-width: 700px) {
+  .coffes_titulo {
+    height: 55rem;
+  }
+}
+
+.coffes_titulo h1 {
+  margin: 0%;
+  color: white;
+  position: absolute;
+}
+
 .coffes_disp {
   max-width: 120rem;
   margin: 0 auto;
+}
+
+.coffes_disp h2 {
+  background-image: url(../assets/fondo.jpg);
 }
 
 .coffees {
   background-color: var(--blanco);
   padding: 0 2rem;
   display: grid;
+  margin: 4rem auto;
 
   text-align: center;
 }
