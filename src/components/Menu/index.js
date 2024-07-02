@@ -4,6 +4,7 @@ import { AuthContext } from "../../auth/AuthContext";
 
 function Menu() {
   const { auth, logout } = useContext(AuthContext);
+
   if (auth.token) {
     //pendiente: &&rol==="ADMIN"
     routes.splice(0, routes.length);

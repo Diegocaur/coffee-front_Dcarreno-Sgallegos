@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../auth/AuthContext";
 import { loginAccount } from "../services/api";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/loginPage.css";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const { setToken } = useContext(AuthContext);
 
   const login = async () => {
@@ -14,6 +15,7 @@ const LoginPage = () => {
 
     if (resp) {
       await setToken(resp.token);
+      navigate("/");
     } else {
       console.log(resp);
     }
