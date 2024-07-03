@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-
-import imagen1 from "../assets/curso2.jpg";
 import "../styles/coffes.css";
 
 function Coffes() {
@@ -8,29 +6,33 @@ function Coffes() {
 
   useEffect(() => {
     const fetchCafes = async () => {
-      //conectar con api
       try {
         const response = await fetch(
           "http://localhost:8081/api/coffee/listacoffees"
         );
         if (!response.ok) {
-          console.log("error");
+          console.error("Error fetching cafes");
+          return;
         }
         const data = await response.json();
         setCafes(data);
       } catch (error) {
-        console.error("error");
+        console.error("Error fetching cafes:", error);
       }
     };
 
     fetchCafes();
   }, []);
 
+  const renderImage = (base64Image) => {
+    return `data:image/png;base64,${base64Image}`;
+  };
+
   return (
     <>
       <div className="coffes_titulo">
         <h1 className="font-black text-6xl text-yellow-950">
-          Servicio de Cafeteria
+          Servicio de Cafetería
         </h1>
       </div>
       <div className="coffes_disp">
@@ -38,7 +40,7 @@ function Coffes() {
           {cafes.map((cafe) => (
             <div className="coffee" key={cafe.id}>
               <h3>{cafe.name}</h3>
-              <img src={imagen1} alt="" />
+              <img src={renderImage(cafe.image64)} alt="" />
               <p>{cafe.description}</p>
             </div>
           ))}

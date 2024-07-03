@@ -50,5 +50,6 @@
 }
 .coffee img {
   width: 100%;
-  height: auto;
+  height: 60%;
+  object-fit: cover;
 }

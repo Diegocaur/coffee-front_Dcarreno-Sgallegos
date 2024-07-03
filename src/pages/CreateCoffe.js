@@ -1,18 +1,12 @@
-import React, { useState } from "react";
-import "../styles/loginPage.css";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../auth/AuthContext";
 
 const CreateCoffee = () => {
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [precio, setPrecio] = useState("");
   const [imagen, setImagen] = useState(null);
-
-  const handleImagenChange = (e) => {
-    const archivo = e.target.files[0];
-    if (archivo) {
-      setImagen(archivo);
-    }
-  };
+  const { auth } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,19 +16,18 @@ const CreateCoffee = () => {
       return;
     }
 
+    const formData = new FormData();
+    formData.append("name", nombre);
+    formData.append("desc", descripcion);
+    formData.append("price", precio);
+    formData.append("foto", imagen);
+
     try {
-      // Convertir la imagen a base64
-      const base64Image = await convertirImagenABase64(imagen);
-
-      const formData = new FormData();
-      formData.append("name", nombre);
-      formData.append("desc", descripcion);
-      formData.append("price", precio);
-      formData.append("foto", base64Image);
-
       const response = await fetch("http://localhost:8081/api/coffee/crear", {
         method: "POST",
-
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
         body: formData,
       });
 
@@ -54,25 +47,15 @@ const CreateCoffee = () => {
     }
   };
 
-  const convertirImagenABase64 = (archivo) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(archivo);
-      reader.onload = () => resolve(reader.result.split(",")[1]);
-      reader.onerror = (error) => reject(error);
-    });
+  const handleImagenChange = (e) => {
+    setImagen(e.target.files[0]);
   };
 
   return (
     <div>
       <div className="login">
-        <h1 className="login_titulo">
-          Cafet<span>eria</span> Ma<span>u</span>le
-        </h1>
-        <h1 className="login_titulo">
-          Ingre<span>sa</span> Tu
-          <span>Nuevo</span> Café
-        </h1>
+        <h1 className="login_titulo">Cafetería Maule</h1>
+        <h1 className="login_titulo">Ingresa Tu Nuevo Café</h1>
       </div>
 
       <form className="login_cuerpo my-10 bg-white shadow rounded-lg p-10">
