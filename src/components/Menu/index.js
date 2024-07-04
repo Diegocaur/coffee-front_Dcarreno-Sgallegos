@@ -13,6 +13,7 @@ function Menu() {
     routes.push({ to: "/page2", text: "Pagina 2" });
     routes.push({ to: "/cursos", text: "Mis Cursos" });
     routes.push({ to: "/vercoffees", text: "Mis coffees" });
+    routes.push({ to: "/verclientes", text: "Mis clientes" });
     routes.push({ to: "/nuevo-coffee", text: "Crear Coffe" });
   }
 

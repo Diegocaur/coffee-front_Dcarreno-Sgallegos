@@ -17,6 +17,7 @@ import CreateCoffe from "./pages/CreateCoffe";
 import { PrivateRoute } from "./auth/PrivateRoute";
 import RegisterPage from "./pages/RegisterPage";
 import TablaCoffees from "./pages/TablaCoffees";
+import TablaClientes from "./pages/TablaClientes";
 
 function App() {
   return (
@@ -37,6 +38,14 @@ function App() {
             element={
               <PrivateRoute>
                 <TablaCoffees></TablaCoffees>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/verclientes"
+            element={
+              <PrivateRoute>
+                <TablaClientes></TablaClientes>
               </PrivateRoute>
             }
           />
