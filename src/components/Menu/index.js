@@ -12,6 +12,7 @@ function Menu() {
     routes.push({ to: "/cafes", text: "Cafes" });
     routes.push({ to: "/page2", text: "Pagina 2" });
     routes.push({ to: "/cursos", text: "Mis Cursos" });
+    routes.push({ to: "/vercoffees", text: "Mis coffees" });
     routes.push({ to: "/nuevo-coffee", text: "Crear Coffe" });
   }
 

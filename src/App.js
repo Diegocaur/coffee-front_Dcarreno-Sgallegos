@@ -16,6 +16,7 @@ import LoginPage from "./pages/LoginPage";
 import CreateCoffe from "./pages/CreateCoffe";
 import { PrivateRoute } from "./auth/PrivateRoute";
 import RegisterPage from "./pages/RegisterPage";
+import TablaCoffees from "./pages/TablaCoffees";
 
 function App() {
   return (
@@ -32,6 +33,14 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registrar" element={<RegisterPage />} />
           <Route
+            path="/vercoffees"
+            element={
+              <PrivateRoute>
+                <TablaCoffees></TablaCoffees>
+              </PrivateRoute>
+            }
+          />
+          <Route
             path="/nuevo-coffee"
             element={
               <PrivateRoute>
@@ -39,6 +48,7 @@ function App() {
               </PrivateRoute>
             }
           />
+
           <Route path="*" element={<p>Ups, no existe la ruta</p>} />
         </Routes>
         <Footer />
