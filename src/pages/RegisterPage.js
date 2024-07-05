@@ -69,7 +69,7 @@ const RegisterPage = () => {
         </h1>
       </div>
 
-      <form className="login_cuerpo my-10 bg-white shadow rounded-lg p-10">
+      <form className="login_cuerpo my-10 bg-white shadow rounded-lg p-10 sombra">
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"

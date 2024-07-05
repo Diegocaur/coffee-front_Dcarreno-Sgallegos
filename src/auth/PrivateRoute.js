@@ -9,7 +9,7 @@ function PrivateRoute({ children }) {
     children
   ) : (
     <Navigate
-      to={"/login"}
+     
       replace
       state={{ path: location.pathname }}
     ></Navigate>
