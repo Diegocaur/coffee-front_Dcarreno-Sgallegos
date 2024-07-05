@@ -3,7 +3,7 @@
 }
 
 .login_titulo {
-  color: rgb(72, 48, 19);
+  color: var(--cafeoscuro);
   font-size: 5rem;
   text-align: center;
 }

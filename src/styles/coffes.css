@@ -21,7 +21,7 @@
 }
 
 .coffes_disp {
-  max-width: 120rem;
+  max-width: 110rem;
   margin: 0 auto;
 }
 
@@ -53,3 +53,34 @@
   height: 60%;
   object-fit: cover;
 }
+
+.coffee_grid{
+  display: grid;
+  
+}
+
+.coffee_grid2 thead{
+  background-color: var(--cafeoscuro);
+}
+
+@media (min-width: 480px) {
+  
+  .coffee_grid{
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 2fr;
+    gap: 2rem;
+  }
+  .coffee_grid2{
+    margin: auto 2rem;
+    
+  }
+  .coffee_grid1{
+  grid-column: 1 / 2;
+  margin-left: 2rem;
+}
+}
+
+
+
+
+

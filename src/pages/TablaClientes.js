@@ -68,9 +68,10 @@ function TablaClientes(){
 
 
     return (
-        <div className="flex justify-around items-center h-screen">
-            <div className="p-10 bg-slate-300">
-            <div className="flex coffes_disp ">
+        <div className="flex flex-col justify-around items-center ">
+            <h1>Lista de clientes</h1>
+            <div className="my-10 bg-white shadow rounded-lg p-10 sombra">
+            <div className="">
             <table className="bg-white shadow-md rounded-lg overflow-hidden">
             <thead className="bg-gray-800 text-white">
                 <tr>
