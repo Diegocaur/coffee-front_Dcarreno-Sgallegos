@@ -4,7 +4,7 @@ import { AuthContext } from "../auth/AuthContext";
 import ToBlob from "../components/ToBlob";
 import CreateCoffee from "./CreateCoffe";
 
-import "../styles/coffes.css"
+import "../styles/coffes.css";
 
 function TablaCoffees() {
   const { auth } = useContext(AuthContext);
@@ -137,18 +137,18 @@ function TablaCoffees() {
       <div className="coffee_grid1">
         <CreateCoffee></CreateCoffee>
       </div>
-      <div className="coffee_grid2" >
-        <h1 className="uppercase text-center" >Lista de coffees</h1>
+      <div className="coffee_grid2">
+        <h1 className="uppercase text-center">Lista de coffees</h1>
         <div className="my-10 bg-white shadow rounded-lg p-10 sombra">
           <div className=" ">
             <table className="bg-white shadow-md rounded-lg overflow-hidden coffes_disp w-full">
-              <thead className="bg-gray-800 text-white">
+              <thead className="text-white">
                 <tr>
                   <th className="px-4 py-2">ID</th>
                   <th className="px-4 py-2">Nombre</th>
                   <th className="px-4 py-2">Descripción</th>
                   <th className="px-4 py-2">Precio</th>
-                  <th className="px-4 py-2">Acciones</th>
+                  <th className="px-4 py-2 final">Acciones</th>
                 </tr>
               </thead>
               <tbody className="text-gray-700">
@@ -159,18 +159,20 @@ function TablaCoffees() {
                     <td className="border px-4 py-2">{cafe.description}</td>
                     <td className="border px-4 py-2">{cafe.price}</td>
                     <td className="border px-4 py-2">
-                      <button
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
-                        onClick={() => handleEdit(cafe)}
-                      >
-                        Editar
-                      </button>
-                      <button
-                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                        onClick={() => handleDelete(cafe.idCoffee)}
-                      >
-                        Eliminar
-                      </button>
+                      <div className="centrar_buttons">
+                        <button
+                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+                          onClick={() => handleEdit(cafe)}
+                        >
+                          Editar
+                        </button>
+                        <button
+                          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                          onClick={() => handleDelete(cafe.idCoffee)}
+                        >
+                          Eliminar
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}

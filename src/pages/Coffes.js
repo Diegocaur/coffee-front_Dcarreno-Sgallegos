@@ -1,13 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import "../styles/coffes.css";
 import { AuthContext } from "../auth/AuthContext";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 
 function Coffes() {
   const { auth } = useContext(AuthContext);
-  console.log("completo",auth)
-  console.log("token", auth.token)
-  console.log("rol?", auth.rol)
+  /*
+  console.log("completo", auth);
+  console.log("token", auth.token);
+  console.log("rol?", auth.rol);*/
 
   const [cafes, setCafes] = useState([]);
   const [testimonios, SetTestimonios] = useState([]);
@@ -15,13 +16,13 @@ function Coffes() {
   const [show, setShow] = useState(false);
   const [idCoffeee, SetIdCoffee] = useState(null);
 
-  const [showForm, setShowForm] = useState(false);
+  const [mostrarForm, setMostrarForm] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const [testimonial, setTestimonial] = useState('');
-  const [username, setUsername] = useState('');
+  const [testimonial, setTestimonial] = useState("");
+  const [username, setUsername] = useState("");
 
-  const [searchQuery, setSearchQuery] = useState('');
+  const [buscarNombre, setBuscarNombre] = useState("");
 
   const openModal = () => {
     setShowModal(true);
@@ -32,7 +33,7 @@ function Coffes() {
     SetIdCoffee(null);
     setTestimonial("");
     setShowModal(false);
-    setShowForm(false);
+    setMostrarForm(false);
   };
 
   useEffect(() => {
@@ -85,40 +86,41 @@ function Coffes() {
 
   const showOpinar = async (id) => {
     SetIdCoffee(id);
-    setShowForm(true);
+    setMostrarForm(true);
   };
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const formData = new FormData();
-      formData.append('idCoffee', idCoffeee);
-      formData.append('testimonial', testimonial);
-      formData.append('username', username);
-      const response = await fetch('http://localhost:8081/api/testimonial/crear', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${auth.token}`,
-        },
-        body: formData
-      });
+      formData.append("idCoffee", idCoffeee);
+      formData.append("testimonial", testimonial);
+      formData.append("username", username);
+      const response = await fetch(
+        "http://localhost:8081/api/testimonial/crear",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+          body: formData,
+        }
+      );
 
       if (response.ok) {
-        alert('Testimonial enviado con éxito');
+        alert("Testimonial enviado con éxito");
         closeModal();
       } else {
-        alert('Error al enviar el testimonial');
+        alert("Error al enviar el testimonial");
       }
     } catch (error) {
-      alert('Error en la solicitud: ' + error.message);
+      alert("Error en la solicitud: " + error.message);
     }
   };
 
-  const filteredCafes = cafes.filter(cafe =>
-    cafe.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filtroCafes = cafes.filter((cafe) =>
+    cafe.name.toLowerCase().includes(buscarNombre.toLowerCase())
   );
 
   return (
@@ -130,26 +132,22 @@ function Coffes() {
           </h1>
         </div>
         <div className="coffes_disp">
-          <input
-            type="text"
-            placeholder="Buscar cafés..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="search-bar"
-          />
+          <div className="contenedor_buscador">
+            <input
+              type="text"
+              placeholder="Buscar cafés..."
+              value={buscarNombre}
+              onChange={(e) => setBuscarNombre(e.target.value)}
+              className="buscador sombra"
+            />
+          </div>
           <div className="coffees sombra">
-            {filteredCafes.map((cafe) => (
+            {filtroCafes.map((cafe) => (
               <div className="coffee" key={cafe.id}>
                 {auth.token && (
                   <div>
-                    <button
-                      onClick={() => showOpinar(cafe.idCoffee)}
-                    >
-                      Opinar
-                    </button>
-
                     <div>
-                      {showForm && (
+                      {mostrarForm && (
                         <Modal
                           isOpen={openModal}
                           onRequestClose={closeModal}
@@ -157,11 +155,21 @@ function Coffes() {
                           overlayClassName="fixed inset-0 bg-gray-500 bg-opacity-75 z-40"
                         >
                           <div className="font-sans bg-white rounded-lg p-8 max-w-md mx-auto">
-                            <h2 className=" text-center text-2xl mb-4">Editar Café</h2>
-                            <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                              <h2 className="text-2xl font-bold mb-6 text-center">Enviar Testimonial</h2>
+                            <h2 className=" text-center text-2xl mb-4">
+                              Editar Café
+                            </h2>
+                            <form
+                              onSubmit={handleSubmit}
+                              className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+                            >
+                              <h2 className="text-2xl font-bold mb-6 text-center">
+                                Enviar Testimonial
+                              </h2>
                               <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="idCoffee">
+                                <label
+                                  className="block text-gray-700 text-sm font-bold mb-2"
+                                  htmlFor="idCoffee"
+                                >
                                   ID del Café
                                 </label>
                                 <input
@@ -174,21 +182,29 @@ function Coffes() {
                                 />
                               </div>
                               <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="testimonial">
+                                <label
+                                  className="block text-gray-700 text-sm font-bold mb-2"
+                                  htmlFor="testimonial"
+                                >
                                   Testimonial
                                 </label>
                                 <textarea
                                   name="testimonial"
                                   id="testimonial"
                                   value={testimonial}
-                                  onChange={(e) => setTestimonial(e.target.value)}
+                                  onChange={(e) =>
+                                    setTestimonial(e.target.value)
+                                  }
                                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                   rows="5"
                                   required
                                 ></textarea>
                               </div>
                               <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+                                <label
+                                  className="block text-gray-700 text-sm font-bold mb-2"
+                                  htmlFor="username"
+                                >
                                   Nombre de Usuario
                                 </label>
                                 <input
@@ -217,11 +233,21 @@ function Coffes() {
                   </div>
                 )}
                 <h3>{cafe.name}</h3>
-                <img src={renderImage(cafe.image64)} alt="" />
+                <div className="imagen_coffee_container">
+                  <img
+                    className="imagen_coffee"
+                    src={renderImage(cafe.image64)}
+                    alt=""
+                  />
+                  <button
+                    className="opinar"
+                    onClick={() => showOpinar(cafe.idCoffee)}
+                  >
+                    Opinar
+                  </button>
+                </div>
                 <p>{cafe.description}</p>
-                <button
-                  onClick={() => showtesti(cafe.idCoffee)}
-                >
+                <button onClick={() => showtesti(cafe.idCoffee)}>
                   Testimonios
                 </button>
               </div>
