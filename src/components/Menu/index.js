@@ -1,9 +1,11 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/AuthContext";
+
 
 function Menu() {
   const { auth, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   if (auth.token) {
     //pendiente: &&rol==="ADMIN"
@@ -32,9 +34,10 @@ function Menu() {
     routes.splice(0, routes.length);
     routes.push({ to: "/", text: "Home" });
     routes.push({ to: "/coffes", text: "Cafes" });
-    routes.push({ to: "/page2", text: "Pagina 2" });
     routes.push({ to: "/cursos", text: "Mis Cursos" });
     routes.push({ to: "/login", text: "Inicia Sesión" });
+    navigate("/");
+    window.location.reload();
   };
 
   return (
@@ -91,7 +94,6 @@ const routes = [];
 
 routes.push({ to: "/", text: "Home" });
 routes.push({ to: "/cafes", text: "Cafes" });
-routes.push({ to: "/page2", text: "Pagina 2" });
 routes.push({ to: "/cursos", text: "Mis Cursos" });
 routes.push({ to: "/login", text: "Inicia Sesión" });
 
