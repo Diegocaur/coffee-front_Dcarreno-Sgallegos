@@ -1,27 +1,38 @@
 import { createContext, useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 
 export const AuthContext = createContext();
 
-//componente contenedor
+// Componente contenedor
 export function AuthProvider({ children }) {
-  const [auth, sethAuth] = useState({ token: null });
+  const [auth, setAuth] = useState({ token: null, rol: null });
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      sethAuth({ token: token });
+      // Decodificar el token para obtener información adicional
+      const decodedToken = jwtDecode(token);
+      const { rol } = decodedToken; // Suponiendo que el token contiene un campo 'role'
+      
+      setAuth({ token, rol });
     }
   }, []);
 
   const setToken = async (token) => {
+    // Guardar el token en localStorage
     localStorage.setItem("token", token);
-    sethAuth({ token: token });
+    
+    // Decodificar el token para obtener información adicional
+    const decodedToken = jwtDecode(token);
+    const { rol } = decodedToken; // Suponiendo que el token contiene un campo 'role'
+    
+    setAuth({ token, rol });
   };
 
-  //cerrar sesion
   const logout = () => {
+    // Eliminar el token de localStorage
     localStorage.removeItem("token");
-    sethAuth({ token: null });
+    setAuth({ token: null, role: null });
   };
 
   return (

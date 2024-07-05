@@ -5,7 +5,10 @@ import Modal from 'react-modal';
 
 function Coffes() {
   const { auth } = useContext(AuthContext);
-  console.log(auth)
+  console.log("completo",auth)
+  console.log("token", auth.token)
+  console.log("rol?", auth.rol)
+
   const [cafes, setCafes] = useState([]);
   const [testimonios, SetTestimonios] = useState([]);
 

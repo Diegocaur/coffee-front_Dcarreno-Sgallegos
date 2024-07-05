@@ -7,14 +7,24 @@ function Menu() {
 
   if (auth.token) {
     //pendiente: &&rol==="ADMIN"
-    routes.splice(0, routes.length);
-    routes.push({ to: "/", text: "Home" });
-    routes.push({ to: "/cafes", text: "Cafes" });
-    routes.push({ to: "/page2", text: "Pagina 2" });
-    routes.push({ to: "/cursos", text: "Mis Cursos" });
-    routes.push({ to: "/vercoffees", text: "Mis coffees" });
-    routes.push({ to: "/verclientes", text: "Mis clientes" });
-    routes.push({ to: "/nuevo-coffee", text: "Crear Coffe" });
+    if(auth.rol[0] === "ADMIN"){
+      routes.splice(0, routes.length);
+      routes.push({ to: "/", text: "Home" });
+      routes.push({ to: "/cafes", text: "Cafes" });
+      routes.push({ to: "/vercoffees", text: "Mis coffees" });
+      routes.push({ to: "/verclientes", text: "Mis clientes" });
+      routes.push({ to: "/nuevo-coffee", text: "Crear Coffe" });
+    }
+
+    if(auth.rol[0] === "CLIENT"){
+          routes.splice(0, routes.length);
+          routes.push({ to: "/", text: "Home" });
+          routes.push({ to: "/cafes", text: "Cafes" });
+          routes.push({ to: "/cursos", text: "Mis Cursos" });
+    }
+    /*
+
+    */
   }
 
   const cerrarSession = () => {
