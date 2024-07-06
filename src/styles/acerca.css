@@ -1,0 +1,80 @@
+.acerca_de-titulos {
+  background-image: url(../assets/granos.jpg);
+  margin-top: 0%;
+  background-repeat: no-repeat;
+  background-size: cover; /*toma todo el ancho del contenido*/
+  position: relative;
+  height: 40rem;
+  margin-bottom: 2rem;
+}
+
+.acerca_de-titulos h1 {
+  margin: 0%;
+  position: absolute;
+  background-color: rgb(0 0 0/ 60%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--blanco);
+}
+
+.acerca_de-cuerpo {
+  background-color: var(--blanco);
+  max-width: 120rem;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+.acerca_de-cuerpo h1 {
+  background-color: var(--cafeclaro);
+  color: var(--blanco);
+  border-radius: 15px 15px 0 0;
+  border: none;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+@media (min-width: 768px) {
+  .acerca_de-cuerpo_ubicacion {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+  .acerca_de-cuerpo_ubicacion p {
+    text-align: center;
+    font-size: x-large;
+    margin: 2rem;
+  }
+}
+.acerca_de-cuerpo_ubicacion img {
+  width: 100%;
+  padding: 2rem;
+}
+
+@media (min-width: 768px) {
+  .acerca_de-cuerpo_desarrolladores {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: ;
+  }
+}
+
+.acerca_de-cuerpo_desarrolladores img {
+  border-radius: 15px;
+  width: 35rem;
+  height: 47rem;
+  margin-bottom: 2rem;
+}
+
+.contenedor_desarrollador {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.contenedor_desarrollador p {
+  margin: 0%;
+}

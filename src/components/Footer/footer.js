@@ -16,7 +16,9 @@ function Footer() {
           <img className="cont_img" src={Imagen3} alt="" />
           <img className="cont_img" src={Imagen4} alt="" />
         </div>
-        <a href="#">Desarrolladores</a>
+        <nav>
+          <NavLink to="/acercade">Acerca De</NavLink>
+        </nav>
       </div>
       <div class="inferior">
         <h5>Copyright Cafeteria CaursGallegos Talca, 2024</h5>
