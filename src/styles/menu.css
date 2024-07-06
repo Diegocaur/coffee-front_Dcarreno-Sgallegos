@@ -41,3 +41,15 @@
 .menu a {
   text-decoration: none;
 }
+
+.cerrar_sesion {
+  background-color: transparent;
+  border: none;
+  color: var(--blanco);
+}
+
+.cerrar_sesion:hover {
+  background-color: red;
+  border-radius: 15px;
+  cursor: pointer;
+}

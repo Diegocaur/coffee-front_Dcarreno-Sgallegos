@@ -82,7 +82,13 @@ function Menu() {
                 </NavLink>
               </li>
             ))}
-            {auth.token ? <button onClick={cerrarSession}>Salir</button> : ""}
+            {auth.token ? (
+              <button className="cerrar_sesion" onClick={cerrarSession}>
+                Salir
+              </button>
+            ) : (
+              ""
+            )}
           </ul>
         </div>
       </div>
