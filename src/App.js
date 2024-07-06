@@ -12,7 +12,7 @@ import { Footer } from "./components/Footer/footer";
 import AcercaDePage from "./pages/AcercaDePage";
 import { AuthProvider } from "./auth/AuthContext";
 import LoginPage from "./pages/LoginPage";
-import CreateCoffe from "./components/FormularioCoffee";
+
 import { PrivateRoute } from "./auth/PrivateRoute";
 import RegisterPage from "./pages/RegisterPage";
 import TablaCoffees from "./pages/TablaCoffees";
