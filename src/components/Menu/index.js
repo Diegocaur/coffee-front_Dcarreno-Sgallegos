@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/AuthContext";
+import Swal from 'sweetalert2'
 
 function Menu() {
   const { auth, logout } = useContext(AuthContext);
@@ -28,6 +29,19 @@ function Menu() {
     */
   }
 
+  const confirmar=()=>{
+    Swal.fire({
+      title: "¿Estas seguro de cerrar sesión?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Si, cerrar sesión",
+      cancelButtonText: "No, mantener!",
+    }).then((result)=> {
+      if (result.isConfirmed){
+        cerrarSession();
+      }
+    });
+  }
   const cerrarSession = () => {
     logout();
     routes.splice(0, routes.length);
@@ -83,7 +97,7 @@ function Menu() {
               </li>
             ))}
             {auth.token ? (
-              <button className="cerrar_sesion" onClick={cerrarSession}>
+              <button className="cerrar_sesion" onClick={confirmar}>
                 Salir
               </button>
             ) : (

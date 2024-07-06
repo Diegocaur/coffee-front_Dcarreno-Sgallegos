@@ -5,16 +5,17 @@ export const AuthContext = createContext();
 
 // Componente contenedor
 export function AuthProvider({ children }) {
-  const [auth, setAuth] = useState({ token: null, rol: null });
+  const [auth, setAuth] = useState({ token: null, rol: null, sub: null });
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       // Decodificar el token para obtener información adicional
       const decodedToken = jwtDecode(token);
-      const { rol } = decodedToken; // Suponiendo que el token contiene un campo 'role'
+      const { rol } = decodedToken;
+      const {sub} = decodedToken // Suponiendo que el token contiene un campo 'role'
       
-      setAuth({ token, rol });
+      setAuth({ token, rol, sub });
     }
   }, []);
 
@@ -24,15 +25,16 @@ export function AuthProvider({ children }) {
     
     // Decodificar el token para obtener información adicional
     const decodedToken = jwtDecode(token);
-    const { rol } = decodedToken; // Suponiendo que el token contiene un campo 'role'
+    const { rol } = decodedToken;
+    const {sub} = decodedToken // Suponiendo que el token contiene un campo 'role'
     
-    setAuth({ token, rol });
+    setAuth({ token, rol,sub });
   };
 
   const logout = () => {
     // Eliminar el token de localStorage
     localStorage.removeItem("token");
-    setAuth({ token: null, role: null });
+    setAuth({ token: null, role: null, sub: null });
   };
 
   return (

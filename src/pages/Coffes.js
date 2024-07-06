@@ -9,8 +9,8 @@ function Coffes() {
   /*
   console.log("completo", auth);
   console.log("token", auth.token);
-  console.log("rol?", auth.rol);*/
-
+  console.log("username?", auth.sub);*/
+  
   const [cafes, setCafes] = useState([]);
   const [testimonios, SetTestimonios] = useState([]);
 
@@ -20,12 +20,10 @@ function Coffes() {
   const [showModal2, setShowModal2] = useState(false);
 
   const [testimonial, setTestimonial] = useState("");
-  const [username, setUsername] = useState("");
-
+ 
   const [buscarNombre, setBuscarNombre] = useState("");
 
   const closeModal = () => {
-    setUsername("");
     SetIdCoffee(null);
     setTestimonial("");
     setShowModal(false);
@@ -88,7 +86,7 @@ function Coffes() {
       const formData = new FormData();
       formData.append("idCoffee", idCoffeee);
       formData.append("testimonial", testimonial);
-      formData.append("username", username);
+      formData.append("username", auth.sub);
       const response = await fetch(
         "http://localhost:8081/api/testimonial/crear",
         {
@@ -175,7 +173,7 @@ function Coffes() {
                                 id="idCoffee"
                                 value={idCoffeee}
                                 className="rounded-lg shadow appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                required
+                                readOnly
                               />
                             </div>
                             <div className="mb-4">
@@ -207,11 +205,11 @@ function Coffes() {
                                 type="text"
                                 name="username"
                                 id="username"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                value={auth.sub}
+                                
                                 className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 maxLength="30"
-                                required
+                                readOnly
                               />
                             </div>
                             <div className="flex items-center justify-center">

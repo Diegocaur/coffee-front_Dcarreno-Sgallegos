@@ -44,7 +44,6 @@ const LoginPage = () => {
             <span> se</span>sión
           </h1>
         </div>
-        W
         <form className=" login_cuerpo my-10 bg-white shadow rounded-lg p-10">
           <div className="my-5 ">
             <label
