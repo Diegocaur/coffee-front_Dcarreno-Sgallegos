@@ -13,27 +13,22 @@ function Coffes() {
   const [cafes, setCafes] = useState([]);
   const [testimonios, SetTestimonios] = useState([]);
 
-  const [show, setShow] = useState(false);
   const [idCoffeee, SetIdCoffee] = useState(null);
 
-  const [mostrarForm, setMostrarForm] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
 
   const [testimonial, setTestimonial] = useState("");
   const [username, setUsername] = useState("");
 
   const [buscarNombre, setBuscarNombre] = useState("");
 
-  const openModal = () => {
-    setShowModal(true);
-  };
-
   const closeModal = () => {
     setUsername("");
     SetIdCoffee(null);
     setTestimonial("");
     setShowModal(false);
-    setMostrarForm(false);
+    setShowModal2(false);
   };
 
   useEffect(() => {
@@ -77,16 +72,12 @@ function Coffes() {
     } catch (error) {
       console.error("Error fetching cafes:", error);
     }
-    setShow(true);
-  };
-
-  const dontshow = () => {
-    setShow(false);
+    setShowModal2(true);
   };
 
   const showOpinar = async (id) => {
     SetIdCoffee(id);
-    setMostrarForm(true);
+    setShowModal(true);
   };
 
   const handleSubmit = async (e) => {
@@ -147,88 +138,94 @@ function Coffes() {
                 {auth.token && (
                   <div>
                     <div>
-                      {mostrarForm && (
-                        <Modal
-                          isOpen={openModal}
-                          onRequestClose={closeModal}
-                          className="fixed inset-0 flex items-center justify-center z-50"
-                          overlayClassName="fixed inset-0 bg-gray-500 bg-opacity-75 z-40"
-                        >
-                          <div className="font-sans bg-white rounded-lg p-8 max-w-md mx-auto">
-                            <h2 className=" text-center text-2xl mb-4">
-                              Editar Café
+                      <Modal
+                        isOpen={showModal}
+                        onRequestClose={closeModal}
+                        className="fixed inset-0 flex items-center justify-center z-50"
+                        overlayClassName="fixed inset-0 bg-gray-500 bg-opacity-45 z-40"
+                      >
+                        <div className="font-sans bg-yellow-700 bg-opacity-45 rounded-lg p-8 max-w-md mx-auto">
+                          <h2 className="text-center text-2xl mb-4">
+                            Editar Café
+                          </h2>
+                          <form
+                            onSubmit={handleSubmit}
+                            className="bg-white bg-opacity-45 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+                          >
+                            <h2 className="text-2xl font-bold mb-6 text-center">
+                              Enviar Testimonial
                             </h2>
-                            <form
-                              onSubmit={handleSubmit}
-                              className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+                            <div className="mb-4">
+                              <label
+                                className="block text-gray-700 text-sm font-bold mb-2"
+                                htmlFor="idCoffee"
+                              >
+                                ID del Café
+                              </label>
+                              <input
+                                type="text"
+                                name="idCoffee"
+                                id="idCoffee"
+                                value={idCoffeee}
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                required
+                              />
+                            </div>
+                            <div className="mb-4">
+                              <label
+                                className="block text-gray-700 text-sm font-bold mb-2"
+                                htmlFor="testimonial"
+                              >
+                                Testimonial
+                              </label>
+                              <textarea
+                                name="testimonial"
+                                id="testimonial"
+                                value={testimonial}
+                                onChange={(e) => setTestimonial(e.target.value)}
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                rows="2"
+                                maxLength="30"
+                                required
+                              ></textarea>
+                            </div>
+                            <div className="mb-4">
+                              <label
+                                className="block text-gray-700 text-sm font-bold mb-2"
+                                htmlFor="username"
+                              >
+                                Nombre de Usuario
+                              </label>
+                              <input
+                                type="text"
+                                name="username"
+                                id="username"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                maxLength="30"
+                                required
+                              />
+                            </div>
+                            <div className="flex items-center justify-center">
+                              <button
+                                type="submit"
+                                className=" bg-amber-100 hover:bg-amber-200 font-bold py-2 px-4 rounded"
+                              >
+                                Guardar cambios
+                              </button>
+                            </div>
+                          </form>
+                          <div className="flex items-center justify-center">
+                            <button
+                              onClick={closeModal}
+                              className=" bg-amber-100 hover:bg-amber-200 font-bold py-2 px-4 rounded"
                             >
-                              <h2 className="text-2xl font-bold mb-6 text-center">
-                                Enviar Testimonial
-                              </h2>
-                              <div className="mb-4">
-                                <label
-                                  className="block text-gray-700 text-sm font-bold mb-2"
-                                  htmlFor="idCoffee"
-                                >
-                                  ID del Café
-                                </label>
-                                <input
-                                  type="text"
-                                  name="idCoffee"
-                                  id="idCoffee"
-                                  value={idCoffeee}
-                                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                  required
-                                />
-                              </div>
-                              <div className="mb-4">
-                                <label
-                                  className="block text-gray-700 text-sm font-bold mb-2"
-                                  htmlFor="testimonial"
-                                >
-                                  Testimonial
-                                </label>
-                                <textarea
-                                  name="testimonial"
-                                  id="testimonial"
-                                  value={testimonial}
-                                  onChange={(e) =>
-                                    setTestimonial(e.target.value)
-                                  }
-                                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                  rows="5"
-                                  required
-                                ></textarea>
-                              </div>
-                              <div className="mb-4">
-                                <label
-                                  className="block text-gray-700 text-sm font-bold mb-2"
-                                  htmlFor="username"
-                                >
-                                  Nombre de Usuario
-                                </label>
-                                <input
-                                  type="text"
-                                  name="username"
-                                  id="username"
-                                  value={username}
-                                  onChange={(e) => setUsername(e.target.value)}
-                                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                  required
-                                />
-                              </div>
-                              <div className="flex items-center justify-between">
-                                <button
-                                  type="submit"
-                                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                                >
-                                  Guardar cambios
-                                </button>
-                              </div>
-                            </form>
+                              Salir
+                            </button>
                           </div>
-                        </Modal>
-                      )}
+                        </div>
+                      </Modal>
                     </div>
                   </div>
                 )}
@@ -247,7 +244,10 @@ function Coffes() {
                   </button>
                 </div>
                 <p>{cafe.description}</p>
-                <button onClick={() => showtesti(cafe.idCoffee)}>
+                <button 
+                onClick={() => showtesti(cafe.idCoffee)}
+                className="testimonios"
+                >
                   Testimonios
                 </button>
               </div>
@@ -255,20 +255,47 @@ function Coffes() {
           </div>
 
           <div>
-            {show && (
-              <div>
-                {console.log("testimonios", testimonios)}
-                <div>
-                  {testimonios.map((testimonios) => (
-                    <div key={testimonios.idTestimonials}>
-                      <p>Nombre de usuario: {testimonios.username}</p>
-                      <p>Testimonio: {testimonios.testimonial}</p>
-                    </div>
-                  ))}
+            <div>
+              <Modal
+                isOpen={showModal2}
+                onRequestClose={closeModal}
+                className="fixed inset-0 flex items-center justify-center z-50"
+                overlayClassName="fixed inset-0 bg-gray-500 bg-opacity-75 z-40"
+              >
+                <div className="font-sans bg-white rounded-lg p-8 max-w-md mx-auto shadow-xl">
+                  <h1 className="text-2xl font-bold text-gray-800 mb-6">
+                    Opiniones de Cafés
+                  </h1>
+                  <div className="bg-gray-100 p-4 rounded-lg shadow-md max-h-96 overflow-y-auto">
+                    {testimonios.map((testimonio) => (
+                      <div
+                        key={testimonio.idTestimonials}
+                        className="bg-white p-4 mb-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
+                      >
+                        <p className="text-xl font-semibold text-gray-800">
+                          Nombre de usuario:{" "}
+                          <span className="font-normal">
+                            {testimonio.username}
+                          </span>
+                        </p>
+                        <p className="text-gray-600 mt-2">
+                          Testimonio:{" "}
+                          <span className="italic">
+                            {testimonio.testimonial}
+                          </span>
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <button
+                    onClick={closeModal}
+                    className="bg-orange-800 mt-6 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors duration-200"
+                  >
+                    Cerrar
+                  </button>
                 </div>
-                <button onClick={() => dontshow()}>Cerrar testimonios</button>
-              </div>
-            )}
+              </Modal>
+            </div>
           </div>
         </div>
       </div>

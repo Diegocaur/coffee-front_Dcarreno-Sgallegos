@@ -125,3 +125,15 @@
 .opinar:hover {
   background-color: var(--cafeoscuro);
 }
+
+.testimonios{
+  background-color: var(--cafeclaro);
+  padding: 8px 12px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+}
+.testimonios:hover {
+  background-color: var(--cafeoscuro);
+}
