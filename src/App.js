@@ -9,8 +9,7 @@ import { Coffes } from "./pages/Coffes";
 import { Page2 } from "./pages/Page2";
 import { Menu } from "./components/Menu";
 import { Footer } from "./components/Footer/footer";
-import { Cursos } from "./pages/Cursos";
-import { MiCurso } from "./components/MiCurso";
+import AcercaDePage from "./pages/AcercaDePage";
 import { AuthProvider } from "./auth/AuthContext";
 import LoginPage from "./pages/LoginPage";
 import CreateCoffe from "./pages/CreateCoffe";
@@ -28,9 +27,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/cafes" element={<Coffes />} />
           <Route path="/page2" element={<Page2 />} />
-          <Route path="/cursos" element={<Cursos />}>
-            <Route path=":url" element={<MiCurso />} />
-          </Route>
+          <Route path="/acercade" element={<AcercaDePage />} />
+
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registrar" element={<RegisterPage />} />
           <Route

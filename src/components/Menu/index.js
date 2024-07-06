@@ -2,27 +2,27 @@ import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/AuthContext";
 
-
 function Menu() {
   const { auth, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   if (auth.token) {
     //pendiente: &&rol==="ADMIN"
-    if(auth.rol[0] === "ADMIN"){
+    if (auth.rol[0] === "ADMIN") {
       routes.splice(0, routes.length);
       routes.push({ to: "/", text: "Home" });
       routes.push({ to: "/cafes", text: "Cafes" });
+      routes.push({ to: "/acercade", text: "Acerca de" });
       routes.push({ to: "/vercoffees", text: "Mis coffees" });
       routes.push({ to: "/verclientes", text: "Mis clientes" });
       routes.push({ to: "/nuevo-coffee", text: "Crear Coffe" });
     }
 
-    if(auth.rol[0] === "CLIENT"){
-          routes.splice(0, routes.length);
-          routes.push({ to: "/", text: "Home" });
-          routes.push({ to: "/cafes", text: "Cafes" });
-          routes.push({ to: "/cursos", text: "Mis Cursos" });
+    if (auth.rol[0] === "CLIENT") {
+      routes.splice(0, routes.length);
+      routes.push({ to: "/", text: "Home" });
+      routes.push({ to: "/cafes", text: "Cafes" });
+      routes.push({ to: "/acercade", text: "Acerca de" });
     }
     /*
 
@@ -34,7 +34,8 @@ function Menu() {
     routes.splice(0, routes.length);
     routes.push({ to: "/", text: "Home" });
     routes.push({ to: "/coffes", text: "Cafes" });
-    routes.push({ to: "/cursos", text: "Mis Cursos" });
+    routes.push({ to: "/acercade", text: "Acerca de" });
+
     routes.push({ to: "/login", text: "Inicia Sesión" });
     navigate("/");
     window.location.reload();
@@ -94,7 +95,7 @@ const routes = [];
 
 routes.push({ to: "/", text: "Home" });
 routes.push({ to: "/cafes", text: "Cafes" });
-routes.push({ to: "/cursos", text: "Mis Cursos" });
+routes.push({ to: "/acercade", text: "Acerca de" });
 routes.push({ to: "/login", text: "Inicia Sesión" });
 
 export { Menu };

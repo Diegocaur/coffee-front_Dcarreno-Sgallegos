@@ -244,9 +244,9 @@ function Coffes() {
                   </button>
                 </div>
                 <p>{cafe.description}</p>
-                <button 
-                onClick={() => showtesti(cafe.idCoffee)}
-                className="testimonios"
+                <button
+                  onClick={() => showtesti(cafe.idCoffee)}
+                  className="testimonios"
                 >
                   Testimonios
                 </button>
