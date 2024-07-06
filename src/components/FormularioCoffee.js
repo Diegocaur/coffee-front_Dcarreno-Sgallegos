@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../auth/AuthContext";
 
-const CreateCoffee = () => {
+const FormularioCoffee = () => {
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [precio, setPrecio] = useState("");
@@ -131,4 +131,4 @@ const CreateCoffee = () => {
   );
 };
 
-export default CreateCoffee;
+export default FormularioCoffee;

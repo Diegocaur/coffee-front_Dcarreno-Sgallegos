@@ -12,7 +12,7 @@ import { Footer } from "./components/Footer/footer";
 import AcercaDePage from "./pages/AcercaDePage";
 import { AuthProvider } from "./auth/AuthContext";
 import LoginPage from "./pages/LoginPage";
-import CreateCoffe from "./pages/CreateCoffe";
+import CreateCoffe from "./components/FormularioCoffee";
 import { PrivateRoute } from "./auth/PrivateRoute";
 import RegisterPage from "./pages/RegisterPage";
 import TablaCoffees from "./pages/TablaCoffees";
@@ -44,14 +44,6 @@ function App() {
             element={
               <PrivateRoute>
                 <TablaClientes></TablaClientes>
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/nuevo-coffee"
-            element={
-              <PrivateRoute>
-                <CreateCoffe />
               </PrivateRoute>
             }
           />

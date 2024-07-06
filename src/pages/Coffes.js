@@ -236,12 +236,14 @@ function Coffes() {
                     src={renderImage(cafe.image64)}
                     alt=""
                   />
-                  <button
-                    className="opinar"
-                    onClick={() => showOpinar(cafe.idCoffee)}
-                  >
-                    Opinar
-                  </button>
+                  {auth.token && (
+                    <button
+                      className="opinar"
+                      onClick={() => showOpinar(cafe.idCoffee)}
+                    >
+                      Opinar
+                    </button>
+                  )}
                 </div>
                 <p>{cafe.description}</p>
                 <button

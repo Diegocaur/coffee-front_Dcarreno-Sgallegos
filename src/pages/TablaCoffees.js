@@ -2,9 +2,10 @@ import { useState, useEffect, useContext } from "react";
 import Modal from "react-modal";
 import { AuthContext } from "../auth/AuthContext";
 import ToBlob from "../components/ToBlob";
-import CreateCoffee from "./CreateCoffe";
+import CreateCoffee from "../components/FormularioCoffee";
 
 import "../styles/coffes.css";
+import FormularioCoffee from "../components/FormularioCoffee";
 
 function TablaCoffees() {
   const { auth } = useContext(AuthContext);
@@ -135,7 +136,7 @@ function TablaCoffees() {
   return (
     <div className="coffee_grid">
       <div className="coffee_grid1">
-        <CreateCoffee></CreateCoffee>
+        <FormularioCoffee></FormularioCoffee>
       </div>
       <div className="coffee_grid2">
         <h1 className="uppercase text-center">Lista de coffees</h1>

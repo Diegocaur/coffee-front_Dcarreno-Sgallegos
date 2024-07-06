@@ -13,9 +13,8 @@ function Menu() {
       routes.push({ to: "/", text: "Home" });
       routes.push({ to: "/cafes", text: "Cafes" });
       routes.push({ to: "/acercade", text: "Acerca de" });
-      routes.push({ to: "/vercoffees", text: "Mis coffees" });
+      routes.push({ to: "/vercoffees", text: "Detalles Coffes" });
       routes.push({ to: "/verclientes", text: "Mis clientes" });
-      routes.push({ to: "/nuevo-coffee", text: "Crear Coffe" });
     }
 
     if (auth.rol[0] === "CLIENT") {
