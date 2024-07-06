@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../auth/AuthContext";
 import { loginAccount } from "../services/api";
 import { NavLink, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 import "../styles/loginPage.css";
 
 const LoginPage = () => {
@@ -15,9 +16,19 @@ const LoginPage = () => {
 
     if (resp) {
       await setToken(resp.token);
-      navigate("/");
+      Swal.fire({
+        title: "Logueado exitosamente",
+        icon: "success",
+      }).then((result)=> {
+        if (result.isConfirmed){
+          navigate("/");
+        }
+      });
     } else {
-      console.log(resp);
+      Swal.fire({
+        title: "Ingresa credenciales validas",
+        icon: "error",
+      });
     }
   };
 

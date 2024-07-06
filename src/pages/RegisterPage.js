@@ -2,27 +2,36 @@ import { AuthContext } from "../auth/AuthContext";
 import { loginAccount } from "../services/api";
 
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/loginPage.css";
+import Swal from 'sweetalert2'
 
 const RegisterPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [repetirPassword, setRepetirPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if ([username, email, password, repetirPassword].includes("")) {
-      console.log("Todos los campos son obligatorios");
+      Swal.fire({
+        title: "Todos los campos son obligatorios",
+        icon: "success",
+      });
       return;
     }
     if (password !== repetirPassword) {
-      console.log("Las contraseñas no coinciden");
+      Swal.fire({
+        title: "Las contraseñas no coinciden",
+      });
       return;
     }
     if (password.length < 8) {
-      console.log("La contraseña debe tener al menos 8 caracteres");
+      Swal.fire({
+        title: "La contraseña debe contener al menos 8 caracteres",
+      });
       return;
     }
 
@@ -42,6 +51,15 @@ const RegisterPage = () => {
       });
 
       if (!response.ok) {
+        let errorMessage;
+        errorMessage = await response.text()
+        if(errorMessage === "Ya existe un usuario con ese nombre"){
+          Swal.fire({
+            title: "Ya existe un usuario con ese nombre ",
+            icon: "error",
+          });
+        }
+        
         throw new Error("Error al registrar usuario");
       }
 
@@ -52,6 +70,15 @@ const RegisterPage = () => {
       setEmail("");
       setPassword("");
       setRepetirPassword("");
+
+      Swal.fire({
+        title: "Usuario creado con éxito. Ahora inicia sesión ",
+        icon: "success",
+      }).then((result)=> {
+        if (result.isConfirmed){
+          navigate("/login");
+        }
+      });
     } catch (error) {
       console.error("Error al registrar usuario:", error);
     }

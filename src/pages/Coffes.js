@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import "../styles/coffes.css";
 import { AuthContext } from "../auth/AuthContext";
+import Swal from 'sweetalert2'
 import Modal from "react-modal";
 
 function Coffes() {
@@ -100,10 +101,16 @@ function Coffes() {
       );
 
       if (response.ok) {
-        alert("Testimonial enviado con éxito");
+        Swal.fire({
+          title: "Testimonio enviado con éxito",
+          icon: "success"
+        });
         closeModal();
       } else {
-        alert("Error al enviar el testimonial");
+        Swal.fire({
+          title: "Error al enviar el testimonio",
+          icon: "error"
+        });
       }
     } catch (error) {
       alert("Error en la solicitud: " + error.message);
@@ -144,7 +151,7 @@ function Coffes() {
                         className="fixed inset-0 flex items-center justify-center z-50"
                         overlayClassName="fixed inset-0 bg-gray-500 bg-opacity-45 z-40"
                       >
-                        <div className="font-sans bg-stone-300 bg-opacity-45 rounded-lg p-8 max-w-md mx-auto">
+                        <div className=" font-sans bg-stone-300 bg-opacity-45 rounded-lg p-8 max-w-md mx-auto">
                           <h2 className="text-center text-2xl mb-4">
                             Editar Café
                           </h2>
@@ -152,12 +159,12 @@ function Coffes() {
                             onSubmit={handleSubmit}
                             className="bg-white bg-opacity-45 shadow-md rounded px-8 pt-6 pb-8 mb-4"
                           >
-                            <h2 className="text-2xl font-bold mb-6 text-center">
+                            <h2 className=" text-2xl font-bold mb-6 text-center">
                               Enviar Testimonial
                             </h2>
-                            <div className="mb-4">
+                            <div className=" mb-4">
                               <label
-                                className="block text-gray-700 text-sm font-bold mb-2"
+                                className=" block text-gray-700 text-sm font-bold mb-2"
                                 htmlFor="idCoffee"
                               >
                                 ID del Café
@@ -167,13 +174,13 @@ function Coffes() {
                                 name="idCoffee"
                                 id="idCoffee"
                                 value={idCoffeee}
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="rounded-lg shadow appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 required
                               />
                             </div>
                             <div className="mb-4">
                               <label
-                                className="block text-gray-700 text-sm font-bold mb-2"
+                                className="rounded-lg block text-gray-700 text-sm font-bold mb-2"
                                 htmlFor="testimonial"
                               >
                                 Testimonial
@@ -183,7 +190,7 @@ function Coffes() {
                                 id="testimonial"
                                 value={testimonial}
                                 onChange={(e) => setTestimonial(e.target.value)}
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 rows="2"
                                 maxLength="30"
                                 required
@@ -202,7 +209,7 @@ function Coffes() {
                                 id="username"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 maxLength="30"
                                 required
                               />
@@ -210,7 +217,7 @@ function Coffes() {
                             <div className="flex items-center justify-center">
                               <button
                                 type="submit"
-                                className=" bg-stone-800 text-white hover:bg-stone-700 font-bold py-2 px-4 rounded"
+                                className=" bg-stone-800 text-white hover:bg-stone-700 font-bold py-2 px-4 rounded-lg"
                               >
                                 Guardar cambios
                               </button>

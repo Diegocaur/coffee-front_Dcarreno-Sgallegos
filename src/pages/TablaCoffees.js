@@ -2,10 +2,10 @@ import { useState, useEffect, useContext } from "react";
 import Modal from "react-modal";
 import { AuthContext } from "../auth/AuthContext";
 import ToBlob from "../components/ToBlob";
-import CreateCoffee from "../components/FormularioCoffee";
-
-import "../styles/coffes.css";
 import FormularioCoffee from "../components/FormularioCoffee";
+import Swal from 'sweetalert2'
+import "../styles/coffes.css";
+
 
 function TablaCoffees() {
   const { auth } = useContext(AuthContext);
@@ -63,13 +63,23 @@ function TablaCoffees() {
       );
 
       if (!response.ok) {
-        throw new Error("Error al eliminar el café");
+        Swal.fire({
+          title: "No se pudo eliminar ese café",
+          icon: "error"
+        });
       }
 
       console.log(`Café con ID ${idCoffee} eliminado correctamente`);
+      Swal.fire({
+        title: "Café eliminado correctamente",
+        icon: "success"
+      });
       setCafes(cafes.filter((cafe) => cafe.idCoffee !== idCoffee));
     } catch (error) {
-      console.error("Error al eliminar el café:", error);
+      Swal.fire({
+        title: "Error al intentar eliminar café",
+        icon: "error"
+      });
     }
   };
 
@@ -107,7 +117,10 @@ function TablaCoffees() {
       );
 
       if (!response.ok) {
-        throw new Error("Error al actualizar el café");
+        Swal.fire({
+          title: "Error al intentar actualizar café",
+          icon: "error"
+        });
       }
 
       const updatedCafe = { ...editingCafe };
@@ -122,10 +135,16 @@ function TablaCoffees() {
         updateCafes(updatedCafe);
       }
 
-      console.log("Café actualizado correctamente");
+      Swal.fire({
+        title: "Café actualizado",
+        icon: "success"
+      });
       closeModal();
     } catch (error) {
-      console.error("Error al actualizar el café:", error);
+      Swal.fire({
+        title: "Error al intentar actualizar café",
+        icon: "error"
+      });
     }
   };
 
@@ -194,13 +213,7 @@ function TablaCoffees() {
                       type="number"
                       className="w-full border p-2 mb-4"
                       value={editingCafe ? editingCafe.idCoffee : ""}
-                      onChange={(e) =>
-                        setEditingCafe({
-                          ...editingCafe,
-                          idCoffee: e.target.value,
-                        })
-                      }
-                      required
+                      readOnly
                     />
                     <label>Nombre:</label>
                     <input

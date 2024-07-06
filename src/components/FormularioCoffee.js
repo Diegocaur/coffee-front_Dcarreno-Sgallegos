@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../auth/AuthContext";
-
+import Swal from "sweetalert2";
 const FormularioCoffee = () => {
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
@@ -12,7 +12,10 @@ const FormularioCoffee = () => {
     e.preventDefault();
 
     if (!nombre || !descripcion || !precio || !imagen) {
-      console.log("Todos los campos son obligatorios");
+      Swal.fire({
+        title: "Todos los campos son obligatorios en el formulario",
+        icon: "error",
+      });
       return;
     }
 
@@ -32,7 +35,10 @@ const FormularioCoffee = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Error al registrar café");
+        Swal.fire({
+          title: "Error al intentar crear café",
+          icon: "error",
+        });
       }
 
       console.log("Café registrado correctamente");
@@ -42,6 +48,18 @@ const FormularioCoffee = () => {
       setDescripcion("");
       setPrecio("");
       setImagen(null);
+
+      if (response.ok) {
+        Swal.fire({
+          title: "Café creado exitosamente",
+          icon: "success",
+        }).then((result)=> {
+          if (result.isConfirmed){
+            window.location.reload();
+          }
+        });
+        
+      }
     } catch (error) {
       console.error("Error al registrar café:", error);
     }
