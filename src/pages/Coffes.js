@@ -144,7 +144,7 @@ function Coffes() {
                         className="fixed inset-0 flex items-center justify-center z-50"
                         overlayClassName="fixed inset-0 bg-gray-500 bg-opacity-45 z-40"
                       >
-                        <div className="font-sans bg-yellow-700 bg-opacity-45 rounded-lg p-8 max-w-md mx-auto">
+                        <div className="font-sans bg-stone-300 bg-opacity-45 rounded-lg p-8 max-w-md mx-auto">
                           <h2 className="text-center text-2xl mb-4">
                             Editar Café
                           </h2>
@@ -210,7 +210,7 @@ function Coffes() {
                             <div className="flex items-center justify-center">
                               <button
                                 type="submit"
-                                className=" bg-amber-100 hover:bg-amber-200 font-bold py-2 px-4 rounded"
+                                className=" bg-stone-800 text-white hover:bg-stone-700 font-bold py-2 px-4 rounded"
                               >
                                 Guardar cambios
                               </button>
