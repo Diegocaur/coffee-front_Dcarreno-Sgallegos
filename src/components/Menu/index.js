@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/AuthContext";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function Menu() {
   const { auth, logout } = useContext(AuthContext);
@@ -29,19 +29,19 @@ function Menu() {
     */
   }
 
-  const confirmar=()=>{
+  const confirmar = () => {
     Swal.fire({
       title: "¿Estas seguro de cerrar sesión?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Si, cerrar sesión",
       cancelButtonText: "No, mantener!",
-    }).then((result)=> {
-      if (result.isConfirmed){
+    }).then((result) => {
+      if (result.isConfirmed) {
         cerrarSession();
       }
     });
-  }
+  };
   const cerrarSession = () => {
     logout();
     routes.splice(0, routes.length);
@@ -88,7 +88,9 @@ function Menu() {
               <li key={index}>
                 <NavLink
                   style={({ isActive }) => ({
-                    color: isActive ? "green" : "grey",
+                    color: isActive ? "brown" : "white",
+                    textTransform: "uppercase",
+                    fontSize: "larger",
                   })}
                   to={item.to}
                 >
