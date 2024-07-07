@@ -13,7 +13,7 @@ function PrivateRoute({ children }) {
   return isAuthenticated && isAdmin ? (
     children
   ) : (
-    <Navigate to="/" replace state={{ from: location.pathname }} />
+    <h1>Ups!No tienes los permisos para acceder..</h1>
   );
 }
 

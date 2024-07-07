@@ -29,12 +29,14 @@ const AcercaDePage = () => {
             <h2>Diego Carreño</h2>
             <img className="sombra" src={Imagen1} alt="Diego" />
             <p>Desarrollador Fullstack</p>
+            <p>20307124-8</p>
             <p>correo@correo.com</p>
           </div>
           <div className="contenedor_desarrollador">
             <h2>Sebastian Gallegos</h2>
             <img className="sombra" src={Imagen3} alt="Pato" />
             <p>Desarrollador Fullstack</p>
+            <p>20690433-k</p>
             <p>correo@correo.com</p>
           </div>
         </div>

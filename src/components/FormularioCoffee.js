@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../auth/AuthContext";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const FormularioCoffee = () => {
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
@@ -53,12 +54,11 @@ const FormularioCoffee = () => {
         Swal.fire({
           title: "Café creado exitosamente",
           icon: "success",
-        }).then((result)=> {
-          if (result.isConfirmed){
+        }).then((result) => {
+          if (result.isConfirmed) {
             window.location.reload();
           }
         });
-        
       }
     } catch (error) {
       console.error("Error al registrar café:", error);
