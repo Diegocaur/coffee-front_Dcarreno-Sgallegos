@@ -65,15 +65,15 @@ function Menu() {
             <h2>Cafeteria</h2>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-coffee"
+              className="icon icon-tabler icon-tabler-coffee" // Cambiado de class a className
               width="80"
               height="80"
               viewBox="0 0 24 24"
-              stroke-width="2"
+              strokeWidth="2" // Cambiado de stroke-width a strokeWidth
               stroke="#7f5345"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round" // Cambiado de stroke-linecap a strokeLinecap
+              strokeLinejoin="round" // Cambiado de stroke-linejoin a strokeLinejoin
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M3 14c.83 .642 2.077 1.017 3.5 1c1.423 .017 2.67 -.358 3.5 -1c.83 -.642 2.077 -1.017 3.5 -1c1.423 -.017 2.67 .358 3.5 1" />

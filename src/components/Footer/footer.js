@@ -20,7 +20,7 @@ function Footer() {
           <NavLink to="/acercade">Acerca De</NavLink>
         </nav>
       </div>
-      <div class="inferior">
+      <div className="inferior">
         <h5>Copyright Cafeteria CaursGallegos Talca, 2024</h5>
       </div>
     </>
